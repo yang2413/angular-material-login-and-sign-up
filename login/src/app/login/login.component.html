@@ -1,0 +1,40 @@
+﻿<mat-card class="card-demo">
+  <mat-card-content>
+    <div class="containerX">
+
+      <div fxLayout="row" fxLayout.xs="column" fxLayout.md="column" fxFlex class="coloredContainerX box">
+        <div fxFlex="12">
+          <div class="container">
+            <h3>Login</h3>
+
+            <form class="mat-dialog-content" (ngSubmit)="onSubmit()" #formControl="ngForm">
+              <!--Contains mat-hint for characters count and has maxLengt set-->
+              <div class="form">
+                <mat-form-field color="primary">
+                  <mat-icon class="icon" matPrefix>perm_identity</mat-icon>
+                  <input matInput #inputstate class="form-control" placeholder="Email" name="email" type="email" [(ngModel)]="email" required >
+                  <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+                </mat-form-field>
+              </div>
+
+              <div class="form">
+                <mat-form-field color="primary">
+                  <mat-icon class="icon" matPrefix>lock_open</mat-icon>
+                  <input matInput #inputstate type="password" class="form-control" placeholder="Password" name="password" [(ngModel)]="password" required >
+                  <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+                </mat-form-field>
+              </div>
+
+              <div mat-dialog-actions>
+                <button mat-button [type]="submit" [disabled]="!formControl.valid">Save</button>
+                <a mat-raised-button  routerLink="/register">Did not receive your activation link?</a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+  <mat-card-footer style="width:95%">
+  </mat-card-footer>
+</mat-card>

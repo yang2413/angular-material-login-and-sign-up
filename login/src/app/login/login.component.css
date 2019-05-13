@@ -1,0 +1,25 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  min-width: 450px;
+}
+
+.container > * {
+  width: 100%;
+}
+
+.form {
+  display: flex;
+  padding-top: 6px;
+}
+
+.mat-form-field {
+  font-size: 16px;
+    flex-grow: 2;
+}
+
+.mat-icon {
+  margin-right: 25px;
+  font-size: 25px;
+  text-align: center;
+}
