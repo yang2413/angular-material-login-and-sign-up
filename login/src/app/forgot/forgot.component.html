@@ -1,0 +1,37 @@
+<mat-card class="card-demo">
+    <mat-card-content>
+      <div class="containerX">
+  
+        <div fxLayout="row" fxLayout.xs="column" fxLayout.md="column" fxFlex class="coloredContainerX box">
+          <div fxFlex>
+            <div class="containerX">
+              <h3 style="text-align: center">Reset Password</h3><hr>
+  
+              <form class="mat-dialog-content" (ngSubmit)="onSubmit()" #formControl="ngForm">
+                <div class="form">
+                  <span>Enter the email address associated</span>
+                </div>
+                
+                <!--Contains mat-hint for characters count and has maxLengt set-->
+                <div class="form" style="margin-top: 15px">
+                  <mat-form-field color="primary">
+                    <!-- <mat-icon class="icon" matPrefix>email</mat-icon> -->
+                    <input matInput #inputstate class="form-control" placeholder="Email address" name="email" type="email" [(ngModel)]="email" required >
+                    <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+                  </mat-form-field>
+                </div>
+  
+                <div mat-dialog-actions style="text-align:center;margin-top: 20px">
+                    <button mat-button [type]="submit" [disabled]="!formControl.valid"><span style="color:#fff">SEND</span></button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-card-footer style="width:100%; text-align: center">
+        <img *ngIf="loading" class="pl-3" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+    </mat-card-footer>
+  </mat-card>
+  

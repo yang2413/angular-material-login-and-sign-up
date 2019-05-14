@@ -3,15 +3,15 @@
     <div class="containerX">
 
       <div fxLayout="row" fxLayout.xs="column" fxLayout.md="column" fxFlex class="coloredContainerX box">
-        <div fxFlex="12">
-          <div class="container">
-            <h3>Login</h3>
+        <div fxFlex>
+          <div class="containerX">
+            <h3 style="text-align: center">Sign in</h3><hr>
 
             <form class="mat-dialog-content" (ngSubmit)="onSubmit()" #formControl="ngForm">
               <!--Contains mat-hint for characters count and has maxLengt set-->
               <div class="form">
                 <mat-form-field color="primary">
-                  <mat-icon class="icon" matPrefix>perm_identity</mat-icon>
+                  <!-- <mat-icon class="icon" matPrefix>email</mat-icon> -->
                   <input matInput #inputstate class="form-control" placeholder="Email" name="email" type="email" [(ngModel)]="email" required >
                   <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
                 </mat-form-field>
@@ -19,15 +19,18 @@
 
               <div class="form">
                 <mat-form-field color="primary">
-                  <mat-icon class="icon" matPrefix>lock_open</mat-icon>
+                  <!-- <mat-icon class="icon" matPrefix>lock_open</mat-icon> -->
                   <input matInput #inputstate type="password" class="form-control" placeholder="Password" name="password" [(ngModel)]="password" required >
                   <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
                 </mat-form-field>
               </div>
 
-              <div mat-dialog-actions>
-                <button mat-button [type]="submit" [disabled]="!formControl.valid">Save</button>
-                <a mat-raised-button  routerLink="/register">Did not receive your activation link?</a>
+              <div class="form">
+                  <a routerLink="/forgot">I forgot my password</a>
+                </div>
+
+              <div mat-dialog-actions style="text-align:center;margin-top: 20px">
+                  <button mat-button [type]="submit" [disabled]="!formControl.valid"><span style="color:#fff">SIGN IN</span></button>
               </div>
             </form>
           </div>
@@ -35,6 +38,10 @@
       </div>
     </div>
   </mat-card-content>
-  <mat-card-footer style="width:95%">
+  <mat-card-footer style="width:100%; text-align: center">
+      <img *ngIf="loading" class="pl-3" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
   </mat-card-footer>
 </mat-card>
+<div id="div_create_button">
+    <a routerLink="/register">Create an account</a>
+</div>

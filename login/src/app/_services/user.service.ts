@@ -27,4 +27,8 @@ export class UserService {
     delete(id: number) {
         return this.http.delete(`${environment.apiUrl}/users/${id}`);
     }
+
+    reset(email: String) {
+        return this.http.post(`${environment.apiUrl}/resetpassword`, email);
+    }
 }

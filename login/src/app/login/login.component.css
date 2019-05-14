@@ -1,7 +1,10 @@
+.mat-card-content {
+  padding: 20px;
+}
+
 .container {
   display: flex;
   flex-direction: column;
-  min-width: 450px;
 }
 
 .container > * {
@@ -22,4 +25,28 @@
   margin-right: 25px;
   font-size: 25px;
   text-align: center;
+}
+
+h3 {
+  text-align: center;
+}
+
+#div_create_button {
+  text-align: center;
+  margin-top: 10px;
+}
+
+button {
+  background: #427af4; 
+  color: white;
+  border-radius: 15px;
+  width: 100%;
+}
+
+input {
+  border-radius: 15px;
+}
+
+hr {
+  background: gray;
 }

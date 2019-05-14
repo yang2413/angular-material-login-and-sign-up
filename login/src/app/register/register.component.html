@@ -1,37 +1,74 @@
-﻿<h2>Register</h2>
-<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-    <div class="form-group">
-        <label for="firstName">First Name</label>
-        <input type="text" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
-        <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
-            <div *ngIf="f.firstName.errors.required">First Name is required</div>
-        </div>
-    </div>
-    <div class="form-group">
-        <label for="Email">Email</label>
-        <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
-        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-            <div *ngIf="f.email.errors.required">Email is required</div>
-        </div>
-    </div>
-    <div class="form-group">
-        <label for="username">Username</label>
-        <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
-        <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
-            <div *ngIf="f.username.errors.required">Username is required</div>
-        </div>
-    </div>
-    <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
-        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-            <div *ngIf="f.password.errors.required">Password is required</div>
-            <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
-        </div>
-    </div>
-    <div class="form-group">
-        <button [disabled]="loading" class="btn btn-primary">Register</button>
-        <img *ngIf="loading" class="pl-3" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
-        <a routerLink="/login" class="btn btn-link">Cancel</a>
-    </div>
-</form>
+﻿<div id="div_create_button">
+    Already have an account? <a routerLink="/login">Sign in</a>
+</div>
+<mat-card class="card-demo">
+        <mat-card-content>
+          <div class="containerX">
+      
+            <div fxLayout="row" fxLayout.xs="column" fxLayout.md="column" fxFlex class="coloredContainerX box">
+              <div fxFlex>
+                <div class="containerX">
+                  <h3 style="text-align: center">Create Account</h3><hr>
+      
+                  <form class="mat-dialog-content" (ngSubmit)="onSubmit()" #formControl="ngForm">
+                    <!--Contains mat-hint for characters count and has maxLengt set-->
+                    <div class="form">
+                      <mat-form-field color="primary">
+                        <!-- <mat-icon class="icon" matPrefix>account_box</mat-icon> -->
+                        <input matInput #inputstate class="form-control" placeholder="First Name" name="firstname" type="text" [(ngModel)]="firstname">
+                        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+                      </mat-form-field>
+                    </div>
+
+                    <div class="form">
+                        <mat-form-field color="primary">
+                          <!-- <mat-icon class="icon" matPrefix>account_box</mat-icon> -->
+                          <input matInput #inputstate class="form-control" placeholder="Last Name" name="lastname" type="text" [(ngModel)]="lastname" required >
+                          <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="form">
+                            <mat-form-field color="primary">
+                              <!-- <mat-icon class="icon" matPrefix>email</mat-icon> -->
+                              <input matInput #inputstate class="form-control" placeholder="Email Address" name="email" type="email" [(ngModel)]="email" required >
+                              <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+                            </mat-form-field>
+                        </div>
+                        
+                    <div class="form">
+                      <mat-form-field color="primary">
+                        <!-- <mat-icon class="icon" matPrefix>lock_open</mat-icon> -->
+                        <input matInput #inputstate type="password" class="form-control" placeholder="Password" name="password" [(ngModel)]="password" required >
+                        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+                      </mat-form-field>
+                    </div>
+
+                    <div class="form">
+                        <mat-form-field color="primary">
+                          <!-- <mat-icon class="icon" matPrefix>lock_open</mat-icon> -->
+                          <input matInput #inputstate type="password" class="form-control" placeholder="Type your password again" name="password" [(ngModel)]="confirmpassword" required >
+                          <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="form">
+                        <section>
+                            <mat-checkbox name="checked" color="primary" [(ngModel)]="checked">Accept terms and condition</mat-checkbox>
+                        </section>
+                    </div>
+                    <div mat-dialog-actions style="text-align:center">
+                        <button mat-button [type]="submit" [disabled]="!formControl.valid"><span style="color:#fff">CREATE ACCOUNT</span></button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </mat-card-content>
+        <mat-card-footer style="width:100%; text-align: center">
+            <img *ngIf="loading" class="pl-3" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+        </mat-card-footer>
+      </mat-card>
+
+

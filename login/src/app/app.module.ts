@@ -6,7 +6,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import {
   MatButtonModule, MatDialogModule, MatIconModule, MatInputModule, MatPaginatorModule, MatSortModule, MatCardModule,
-  MatTableModule, MatToolbarModule,
+  MatTableModule, MatToolbarModule, MatCheckboxModule, 
 } from '@angular/material';
 import {FlexLayoutModule} from '@angular/flex-layout';
 
@@ -21,6 +21,7 @@ import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 import { HomeComponent } from './home';
 import { LoginComponent } from './login';
 import { RegisterComponent } from './register';
+import { ForgotComponent } from './forgot/forgot.component';
 
 @NgModule({
     imports: [
@@ -37,6 +38,7 @@ import { RegisterComponent } from './register';
         MatToolbarModule,
         MatCardModule,
         MatPaginatorModule,
+        MatCheckboxModule,
         FlexLayoutModule,
         BrowserAnimationsModule,
         ReactiveFormsModule,
@@ -48,7 +50,8 @@ import { RegisterComponent } from './register';
         HomeComponent,
         LoginComponent,
         RegisterComponent
-    ],
+,
+        ForgotComponent    ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },

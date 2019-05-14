@@ -1,15 +1,29 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {MatCheckboxModule} from '@angular/material';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { first } from 'rxjs/operators';
 
 import { AlertService, UserService, AuthenticationService } from '@app/_services';
 
-@Component({templateUrl: 'register.component.html'})
+@Component({templateUrl: 'register.component.html',
+    styleUrls: ['./register.component.css']})
 export class RegisterComponent implements OnInit {
     registerForm: FormGroup;
     loading = false;
     submitted = false;
+    firstname: string = '';
+    lastname: string = '';
+    email: string = '';
+    username: string = '';
+    password: string = '';
+    confirmpassword: string = '';
+    checked: boolean = false;
+
+    formControl = new FormControl('', [
+        Validators.required,
+        Validators.email,
+      ]);
 
     constructor(
         private formBuilder: FormBuilder,
@@ -18,17 +32,21 @@ export class RegisterComponent implements OnInit {
         private userService: UserService,
         private alertService: AlertService
     ) {// redirect to home if already logged in
-        if (this.authenticationService.currentUserValue) {this.router.navigate(['/']);
-        }
+        this.registerForm = formBuilder.group({
+            color: 'primary',
+            fontSize: [16, Validators.min(10)],
+          });
+        if (this.authenticationService.currentUserValue) {this.router.navigate(['/']);}
     }
 
+    getErrorMessage() {
+        return this.formControl.hasError('required') ? 'Required field' :
+             this.formControl.hasError('email') ? 'Not a valid email' :
+          '';
+      }
+
     ngOnInit() {
-        this.registerForm = this.formBuilder.group({
-            firstName: ['', Validators.required],
-            email: ['', Validators.required],
-            username: ['', Validators.required],
-            password: ['', [Validators.required, Validators.minLength(6)]]
-        });
+        
     }
 
     // convenience getter for easy access to form fields
@@ -36,11 +54,6 @@ export class RegisterComponent implements OnInit {
 
     onSubmit() {
         this.submitted = true;
-
-        // stop here if form is invalid
-        if (this.registerForm.invalid) {
-            return;
-        }
 
         this.loading = true;
         this.userService.register(this.registerForm.value)
